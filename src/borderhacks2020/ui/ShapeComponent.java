@@ -4,6 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.gui.GUIContext;
 
 /**
@@ -30,6 +31,14 @@ public class ShapeComponent extends ScreenComponent {
         super(container);
         screenBox = new Rectangle(0, 0, width, height);
         setLocation(x, y);
+        setFill(fill);
+        setOutline(outline);
+        setOutlineWidth(5);
+    }
+
+    public ShapeComponent(GUIContext container, Shape shape, Color fill, Color outline) {
+        super(container);
+        screenBox = shape;
         setFill(fill);
         setOutline(outline);
         setOutlineWidth(5);
@@ -70,7 +79,7 @@ public class ShapeComponent extends ScreenComponent {
 
     /**
      * Sets the current outline Color
-     * @param fill new outline Color
+     * @param outline new outline Color
      */
     public void setOutline(Color outline) {
         this.outline = outline;
@@ -91,5 +100,9 @@ public class ShapeComponent extends ScreenComponent {
     public void setOutlineWidth(int outlineWidth) {
         this.outlineWidth = outlineWidth;
     }
+
+    public Shape getScreenBox() {return screenBox;}
+
+    public void setScreenBox(Shape shape) {screenBox = shape;}
 
 }
