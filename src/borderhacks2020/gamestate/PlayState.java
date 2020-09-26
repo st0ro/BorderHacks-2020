@@ -142,6 +142,12 @@ public class PlayState extends EventBasedState {
             }
         };
         components.add(btnNews2);
+        components.add(new Button(gameContainer, 1586, 941, 578, 128){
+            @Override
+            public void onLeftClick(){
+                stateBasedGame.enterState(1);
+            }
+        });
     }
 
     public void updateBar(GameContainer gameContainer, int barNum, float progress) throws SlickException {
