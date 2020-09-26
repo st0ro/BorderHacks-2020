@@ -27,6 +27,14 @@ public class PlayState extends EventBasedState {
     private Label lblDate;
     private int timer;
 
+    private int cases;
+    private float infectionRate;
+    private float happiness;
+    private float happinessRate;
+    private float economy;
+    private float economyRate;
+
+
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         components.add(new ImageComponent(gameContainer, "assets/gamestate/gameScreen.png", Main.WIDTH/2, Main.HEIGHT/2, Main.WIDTH, Main.HEIGHT));
@@ -56,6 +64,13 @@ public class PlayState extends EventBasedState {
 
         bigMap = new ImageComponent(gameContainer, "assets/map.png", 465, 619, 780, 728);
         components.add(bigMap);
+        cases = 100;
+        happiness = 1;
+        economy = 1;
+        infectionRate = 2;
+        happinessRate = 0.99f;
+        economyRate = 1.01f;
+
     }
 
     @Override
@@ -65,6 +80,9 @@ public class PlayState extends EventBasedState {
             timer -= 1000;
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             lblDate.setText(dateFormat.format(calendar.getTime()));
+            cases *= infectionRate;
+            happiness *= happinessRate;
+            economy *= economyRate;
         }
     }
 
