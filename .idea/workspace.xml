@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d558298-ecef-4155-886a-14eefb975bf3" name="Default Changelist" comment="" />
+    <list default="true" id="1d558298-ecef-4155-886a-14eefb975bf3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Accelerated research.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Complete Closure.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Policies/completeclosure.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Essentials only.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Policies/essentialsonly.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Mandatory Masks.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Minimal Contact.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/No Gatherings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Open borders.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Restricted Travel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Socially distanced entertainment.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Policies/sociallydistance.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/Stimulus Check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Policies/normal operation.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Policies/normaloperation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/Policy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/Policy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/PolicyChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/PolicyChange.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,11 +106,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1601091055650">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1601150548927">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601091055650" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601150548927" />
     <state x="743" y="410" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1601082532261">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -85,22 +131,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="261" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601082941136" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1601097832685">
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1601153544313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601097832685" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1601097832685">
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601153544313" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1601153544313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601097832685" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1601097832685">
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601153544313" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1601153544313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601097832685" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1601097832685">
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601153544313" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1601153544313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601097832685" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601153544313" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1601086683638">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

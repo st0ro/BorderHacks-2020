@@ -11,13 +11,28 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
+import borderhacks2020.ui.Label;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class PlayState extends EventBasedState {
 
     private Image mapImg, graphImg;
-    private ImageComponent selector;
+    private ImageComponent selector, bigMap;
     private boolean mapSelected = true;
     private ShapeComponent[] bars = new ShapeComponent[3];
+    private Calendar calendar;
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+    private Label lblDate;
+    private int timer;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -54,6 +69,23 @@ public class PlayState extends EventBasedState {
         super.render(gameContainer, game, g);
         for (ShapeComponent s: bars) {
             s.render(gameContainer, g);
+        lblDate = new Label(gameContainer, "date", 451, 60, Main.pixelFontBlack);
+        components.add(lblDate);
+        calendar = Calendar.getInstance();
+        calendar.set(2020, 0,1);
+        lblDate.setText(dateFormat.format(calendar.getTime()));
+
+        bigMap = new ImageComponent(gameContainer, "assets/map.png", 465, 619, 780, 728);
+        components.add(bigMap);
+    }
+
+    @Override
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        timer += delta;
+        if(timer > 1000){
+            timer -= 1000;
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            lblDate.setText(dateFormat.format(calendar.getTime()));
         }
     }
 
