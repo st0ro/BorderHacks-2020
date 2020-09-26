@@ -3,19 +3,20 @@ package borderhacks2020;
 import borderhacks2020.gamestate.PlayState;
 import borderhacks2020.mainmenu.MainMenu;
 import borderhacks2020.mainmenu.PolicyChange;
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.*;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Main extends StateBasedGame {
 
     public static final int WIDTH = 1920, HEIGHT = 1080;
     public static UnicodeFont fontSegoe14;
+    public static SpriteSheetFont pixelFontBlack;
 
     public Main() {
         super("Pandemic!!!");
@@ -30,6 +31,7 @@ public class Main extends StateBasedGame {
         fontSegoe14.addAsciiGlyphs();
         fontSegoe14.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
         fontSegoe14.loadGlyphs();
+        pixelFontBlack = new SpriteSheetFont(new SpriteSheet(new Image("assets/fontblack.png", false, Image.FILTER_NEAREST).getScaledCopy(7f), 35, 35), ' ');
         gameContainer.setDefaultFont(fontSegoe14);
 
     }

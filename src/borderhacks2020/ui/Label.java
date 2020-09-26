@@ -55,4 +55,11 @@ public class Label extends ScreenComponent {
         FontUtils.drawString(font, text, alignment, getX(), getY(), 0, Color.white);
         // TODO line wrapping
     }
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
