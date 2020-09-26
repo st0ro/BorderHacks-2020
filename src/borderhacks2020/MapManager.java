@@ -16,7 +16,7 @@ public class MapManager {
         int width = rtBound - lfBound;
         int height = lwBound - upBound;
         for (int i = 0; i < numOfCases; i++) {
-            cases.add(new ShapeComponent(gameContainer, (int) (Math.random() * width) + lfBound, (int) (Math.random() * height) + upBound, 16, 16, Color.red, Color.red));
+            cases.add(new ShapeComponent(gameContainer, (int) (Math.random() * width) + lfBound, (int) (Math.random() * height) + upBound, 16, 16, Color.red, Color.transparent));
         }
     }
 
