@@ -9,7 +9,7 @@ import org.newdawn.slick.gui.GUIContext;
 public class Button extends ScreenComponent {
 
     private Image image, hovered, held;
-    private boolean pressed;
+    private boolean pressed, noImage;
 
     public Button(GUIContext container, int x, int y, int width, int height, Image image) {
         super(container);
@@ -20,8 +20,18 @@ public class Button extends ScreenComponent {
         setHeld(image);
     }
 
+    public Button(GUIContext container, int x, int y, int width, int height){
+        super(container);
+        screenBox = new Rectangle(0, 0, width, height);
+        setLocation(x, y);
+        noImage = true;
+    }
+
     @Override
     public void render(GUIContext container, Graphics g) throws SlickException {
+        if(noImage){
+            return;
+        }
         if(pressed) {
             held.draw(screenBox.getMinX(), screenBox.getMinY(), getWidth(), getHeight());
         }
