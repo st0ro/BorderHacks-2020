@@ -87,12 +87,12 @@ public class PlayState extends EventBasedState {
             components.add(s);
         }
         activeCases = 100;
-        happiness = 1;
-        economy = 1;
-        infectionRate = .25f;
-        happinessRate = 0.99f;
-        economyRate = 1.01f;
-        recoveryRate = 0.18f;
+        happiness = 75;
+        economy = 75;
+        infectionRate = 0.2f;
+        happinessRate = -0.008f;
+        economyRate = 0.001f;
+        recoveryRate = 0.15f;
         deaths = 0;
         totalCases = 100;
         calendar = Calendar.getInstance();
@@ -109,8 +109,8 @@ public class PlayState extends EventBasedState {
         lblRecovered = new Label(gameContainer, Integer.toString(totalCases-activeCases-deaths), 1860, 290, Main.pixelFontBlack, FontUtils.Alignment.RIGHT);
         components.add(lblRecovered);
 
-        updateBar(gameContainer, 0, happiness);
-        updateBar(gameContainer, 1, economy);
+        updateBar(gameContainer, 0, happiness/100);
+        updateBar(gameContainer, 1, economy/100);
         updateBar(gameContainer, 2, infectionRate - recoveryRate);
         manager = new MapManager();
     }
@@ -135,21 +135,22 @@ public class PlayState extends EventBasedState {
                 timer -= 1000;
                 calendar.add(Calendar.DAY_OF_MONTH, 1);
                 lblDate.setText(dateFormat.format(calendar.getTime()));
-                deaths += activeCases *0.05;
-                int newCases = Math.round(activeCases *(infectionRate-recoveryRate));
+                int newDeaths = (int) Math.floor(activeCases *0.01);
+                deaths += newDeaths;
+                int newCases = (int) Math.ceil(activeCases *(infectionRate-recoveryRate));
                 activeCases += newCases;
                 manager.add(container, newCases/10);
                 totalCases += activeCases * infectionRate;
-                happiness *= happinessRate;
-                economy *= economyRate;
+                happiness = happiness + happiness * happinessRate;
+                economy = economy + economy * economyRate;
 
                 lblTotal.setText(Integer.toString(totalCases));
                 lblActive.setText(Integer.toString(activeCases));
                 lblDeaths.setText(Integer.toString(deaths));
                 lblRecovered.setText(Integer.toString(totalCases-activeCases-deaths));
 
-                updateBar(container, 0, happiness);
-                updateBar(container, 1, economy);
+                updateBar(container, 0, happiness/100);
+                updateBar(container, 1, economy/100);
                 updateBar(container, 2, infectionRate - recoveryRate);
             }
             playbutton.setLocation(10000, 10000);
