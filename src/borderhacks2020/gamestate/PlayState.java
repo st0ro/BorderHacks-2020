@@ -4,23 +4,19 @@ import borderhacks2020.EventBasedState;
 import borderhacks2020.Main;
 import borderhacks2020.ui.Button;
 import borderhacks2020.ui.ImageComponent;
-import borderhacks2020.ui.ScreenComponent;
 import borderhacks2020.ui.ShapeComponent;
+import borderhacks2020.ui.Label;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
-
-import java.util.ArrayList;
-import borderhacks2020.ui.Label;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class PlayState extends EventBasedState {
@@ -46,6 +42,7 @@ public class PlayState extends EventBasedState {
             public void onLeftClick(){
                 mapSelected = true;
                 selector.setImage(mapImg);
+                bigMap.setEnabled(true);
             }
         });
         components.add(new Button(gameContainer, 1186, 941, 165, 128){
@@ -53,6 +50,7 @@ public class PlayState extends EventBasedState {
             public void onLeftClick(){
                 mapSelected = false;
                 selector.setImage(graphImg);
+                bigMap.setEnabled(false);
             }
         });
         bars[0] = new ShapeComponent(gameContainer, 1192, 468, 0, 53, new Color(0x47bc4f), Color.transparent);
@@ -69,6 +67,7 @@ public class PlayState extends EventBasedState {
         super.render(gameContainer, game, g);
         for (ShapeComponent s: bars) {
             s.render(gameContainer, g);
+        }
         lblDate = new Label(gameContainer, "date", 451, 60, Main.pixelFontBlack);
         components.add(lblDate);
         calendar = Calendar.getInstance();
