@@ -1,6 +1,6 @@
 package borderhacks2020;
 
-import borderhacks2020.deskstate.DeskState;
+import borderhacks2020.gamestate.PlayState;
 import borderhacks2020.mainmenu.MainMenu;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -23,7 +23,7 @@ public class Main extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gameContainer) throws SlickException {
         addState(new MainMenu());
-        addState(new DeskState());
+        addState(new PlayState());
         fontSegoe14 = new UnicodeFont(new java.awt.Font("Segoe UI", Font.PLAIN, 14));
         fontSegoe14.addAsciiGlyphs();
         fontSegoe14.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
