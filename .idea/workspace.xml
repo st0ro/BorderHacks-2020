@@ -24,7 +24,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/slick/javadoc" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -42,8 +44,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601082452163</updated>
+      <workItem from="1601083929108" duration="53000" />
+      <workItem from="1601084033407" duration="515000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1601082886776">
@@ -54,10 +61,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="743" y="410" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601082532261" />
-    <state x="666" y="261" key="FileChooserDialogImpl" timestamp="1601082941136">
+    <state x="666" y="261" key="FileChooserDialogImpl" timestamp="1601083981027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="261" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601082941136" />
+    <state x="666" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601083981027" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1601082943364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
