@@ -2,6 +2,7 @@ package borderhacks2020;
 
 import borderhacks2020.gamestate.PlayState;
 import borderhacks2020.mainmenu.MainMenu;
+import borderhacks2020.mainmenu.PolicyChange;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -24,11 +25,13 @@ public class Main extends StateBasedGame {
     public void initStatesList(GameContainer gameContainer) throws SlickException {
         addState(new MainMenu());
         addState(new PlayState());
+        addState(new PolicyChange());
         fontSegoe14 = new UnicodeFont(new java.awt.Font("Segoe UI", Font.PLAIN, 14));
         fontSegoe14.addAsciiGlyphs();
         fontSegoe14.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
         fontSegoe14.loadGlyphs();
         gameContainer.setDefaultFont(fontSegoe14);
+
     }
 
     public static void main(String args[]){
