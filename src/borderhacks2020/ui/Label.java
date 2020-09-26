@@ -52,7 +52,7 @@ public class Label extends ScreenComponent {
 
     @Override
     public void render(GUIContext container, Graphics g) throws SlickException {
-        FontUtils.drawString(font, text, alignment, getX(), getY(), getWidth(), Color.white);
+        FontUtils.drawString(font, text, alignment, getX(), getY(), 0, Color.white);
         // TODO line wrapping
     }
 }
