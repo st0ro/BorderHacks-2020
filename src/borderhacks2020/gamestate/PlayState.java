@@ -8,6 +8,7 @@ import borderhacks2020.ui.ImageComponent;
 import borderhacks2020.ui.ShapeComponent;
 import borderhacks2020.ui.Label;
 
+import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,6 +22,7 @@ import javax.swing.plaf.FontUIResource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class PlayState extends EventBasedState {
@@ -33,8 +35,9 @@ public class PlayState extends EventBasedState {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
     private Label lblDate, lblTotal, lblActive, lblDeaths, lblRecovered;
     private int timer;
-    private boolean gameTicking = true;
+    private boolean gameTicking = true, ableToPlay = true;
     private MapManager manager;
+    private Button btnNews1, btnNews2;
 
     private int activeCases;
     private float infectionRate;
@@ -46,6 +49,7 @@ public class PlayState extends EventBasedState {
     private int deaths;
     private int totalCases;
 
+    private Calendar firstEvent, secondEvent;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -77,7 +81,9 @@ public class PlayState extends EventBasedState {
         components.add(new Button(gameContainer, 705, 78, 90, 83){
             @Override
             public void onLeftClick(){
-                gameTicking = !gameTicking;
+                if(ableToPlay){
+                    gameTicking = !gameTicking;
+                }
             }
         });
         bars[0] = new ShapeComponent(gameContainer, 1192, 468, 0, 53, new Color(0x47bc4f), Color.transparent);
@@ -96,7 +102,7 @@ public class PlayState extends EventBasedState {
         deaths = 0;
         totalCases = 100;
         calendar = Calendar.getInstance();
-        calendar.set(2020, 0,1);
+        calendar.set(2020, Calendar.JANUARY,0, 0, 0, 0);
         lblDate = new Label(gameContainer, dateFormat.format(calendar.getTime()), 451, 60, Main.pixelFontBlack);
         components.add(lblDate);
 
@@ -113,6 +119,29 @@ public class PlayState extends EventBasedState {
         updateBar(gameContainer, 1, economy);
         updateBar(gameContainer, 2, infectionRate - recoveryRate);
         manager = new MapManager();
+
+        firstEvent = Calendar.getInstance();
+        firstEvent.set(2020, Calendar.JANUARY, 26, 0, 0, 0);
+        secondEvent = Calendar.getInstance();
+        secondEvent.set(2020, Calendar.MAY, 13, 0, 0, 0);
+        btnNews1 = new Button(gameContainer, 10000, 10000, 780, 680, new Image("assets/News/News1.png")){
+            @Override
+            public void onLeftClick(){
+                gameTicking = true;
+                ableToPlay = true;
+                setLocation(10000, 10000);
+            }
+        };
+        components.add(btnNews1);
+        btnNews2 = new Button(gameContainer, 10000, 10000, 780, 680, new Image("assets/News/News2.png")){
+            @Override
+            public void onLeftClick(){
+                gameTicking = true;
+                ableToPlay = true;
+                setLocation(10000, 10000);
+            }
+        };
+        components.add(btnNews2);
     }
 
     public void updateBar(GameContainer gameContainer, int barNum, float progress) throws SlickException {
@@ -151,6 +180,17 @@ public class PlayState extends EventBasedState {
                 updateBar(container, 0, happiness);
                 updateBar(container, 1, economy);
                 updateBar(container, 2, infectionRate - recoveryRate);
+
+                if(calendar.get(Calendar.MONTH) == firstEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == firstEvent.get(Calendar.DAY_OF_MONTH)){
+                    gameTicking = false;
+                    ableToPlay = false;
+                    btnNews1.setLocation(960, 540);
+                }
+                if(calendar.get(Calendar.MONTH) == firstEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == firstEvent.get(Calendar.DAY_OF_MONTH)){
+                    gameTicking = false;
+                    ableToPlay = false;
+                    btnNews2.setLocation(960, 540);
+                }
             }
             playbutton.setLocation(10000, 10000);
         }
