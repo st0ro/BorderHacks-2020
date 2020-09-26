@@ -25,7 +25,7 @@ public class PolicyChange extends EventBasedState {
         components.add(economicPolicyBox);
         Slot otherPolicyBox = new Slot(gameContainer, 4 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0x69D15B"), Color.lightGray);
         components.add(otherPolicyBox);
-        Button[] buttons = {
+        Policy[] policies = {
                 new Policy(gameContainer, 250, 700, 150, 150, new Image("assets/policies/regular.png"), socialPolicyBox),
                 new Policy(gameContainer, 450, 700, 150, 150, new Image("assets/policies/mandatorymasks.png"), socialPolicyBox),
                 new Policy(gameContainer, 650, 700, 150, 150, new Image("assets/policies/nogatherings.png"), socialPolicyBox),
@@ -41,11 +41,11 @@ public class PolicyChange extends EventBasedState {
                 new Policy(gameContainer, 1050, 900, 150, 150, new Image("assets/policies/stimuluscheck.png"), otherPolicyBox),
                 new Policy(gameContainer, 1250, 900, 150, 150, new Image("assets/policies/construction.png"), otherPolicyBox),
                 new Policy(gameContainer, 1450, 900, 150, 150, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox),
-                new Policy(gameContainer, 1650, 900, 150, 150, new Image("assets/testpolicy.png"), otherPolicyBox)
+                new Policy(gameContainer, 1650, 900, 150, 150, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox)
         };
         components.add(new Button(gameContainer, Main.WIDTH/2, Main.HEIGHT/2 - 50, 150, 75, new Image("assets/title_screen/playbtn.png")));
-        for (int i = 0; i < buttons.length; i++) {
-            components.add(buttons[i]);
+        for (int i = 0; i < policies.length; i++) {
+            components.add(policies[i]);
         }
         components.add(new Label(gameContainer, "Social Gatherings",  Main.WIDTH / 5,  150));
         components.add(new Label(gameContainer, "International Policy",  2*Main.WIDTH / 5,  150));
