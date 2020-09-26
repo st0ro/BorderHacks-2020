@@ -4,16 +4,20 @@ import borderhacks2020.EventBasedState;
 import borderhacks2020.Main;
 import borderhacks2020.ui.Button;
 import borderhacks2020.ui.ImageComponent;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import borderhacks2020.ui.ScreenComponent;
+import borderhacks2020.ui.ShapeComponent;
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.ArrayList;
 
 public class PlayState extends EventBasedState {
 
     private Image mapImg, graphImg;
     private ImageComponent selector;
     private boolean mapSelected = true;
+    private ShapeComponent[] bars = new ShapeComponent[3];
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -36,6 +40,21 @@ public class PlayState extends EventBasedState {
                 selector.setImage(graphImg);
             }
         });
+        bars[0] = new ShapeComponent(gameContainer, 1192, 468, 0, 53, new Color(0x47bc4f), Color.transparent);
+        bars[1] = new ShapeComponent(gameContainer, 1192, 610, 0, 53, new Color(0x47bc4f), Color.transparent);
+        bars[2] = new ShapeComponent(gameContainer, 1192, 753, 0, 53, new Color(0x47bc4f), Color.transparent);
+    }
+
+    public void updateBar(GameContainer gameContainer, int barNum, float progress) throws SlickException {
+        Rectangle rect = (Rectangle)(bars[barNum].getScreenBox());
+        rect.setWidth((int)(630 * progress));
+    }
+
+    public void render(GameContainer gameContainer, StateBasedGame game, Graphics g) throws SlickException {
+        super.render(gameContainer, game, g);
+        for (ShapeComponent s: bars) {
+            s.render(gameContainer, g);
+        }
     }
 
     @Override
