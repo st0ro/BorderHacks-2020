@@ -30,13 +30,15 @@ public class PlayState extends EventBasedState {
     private Label lblDate;
     private int timer;
 
-    private int cases;
+    private int activeCases;
     private float infectionRate;
     private float happiness;
     private float happinessRate;
     private float economy;
     private float economyRate;
-    private int recoveryRate;
+    private float recoveryRate;
+    private int deaths;
+    private int totalCases;
 
 
     @Override
@@ -69,13 +71,15 @@ public class PlayState extends EventBasedState {
             components.add(s);
         }
         updateBar(gameContainer, 1, 0.34f);
-        cases = 100;
+        activeCases = 100;
         happiness = 1;
         economy = 1;
         infectionRate = 2;
         happinessRate = 0.99f;
         economyRate = 1.01f;
-        recoveryRate = 50;
+        recoveryRate = 0.5f;
+        deaths = 0;
+        totalCases = 100;
     }
 
     public void updateBar(GameContainer gameContainer, int barNum, float progress) throws SlickException {
@@ -104,7 +108,9 @@ public class PlayState extends EventBasedState {
             timer -= 1000;
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             lblDate.setText(dateFormat.format(calendar.getTime()));
-            cases = (int)infectionRate*cases - recoveryRate;
+            deaths += activeCases *0.05;
+            activeCases = Math.round(activeCases *(infectionRate-recoveryRate));
+            totalCases += activeCases * infectionRate;
             happiness *= happinessRate;
             economy *= economyRate;
         }
