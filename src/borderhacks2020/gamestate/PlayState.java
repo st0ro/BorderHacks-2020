@@ -5,7 +5,6 @@ import borderhacks2020.Main;
 import borderhacks2020.MapManager;
 import borderhacks2020.ui.*;
 
-import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
@@ -13,19 +12,16 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.util.FontUtils;
-import sun.font.FontUtilities;
 
-import javax.swing.plaf.FontUIResource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class PlayState extends EventBasedState {
 
     private Image mapImg, graphImg;
-    private ImageComponent selector, bigMap, playbutton;
+    private ImageComponent selector, bigMap, playButton, graphBack;
     private boolean mapSelected = true;
     private ShapeComponent[] bars = new ShapeComponent[3];
     private Calendar calendar;
@@ -35,7 +31,6 @@ public class PlayState extends EventBasedState {
     private boolean gameTicking = true, ableToPlay = true;
     private MapManager manager;
     private Button btnNews1, btnNews2;
-    private GuiGroup groupGraph;
     private Graph graphTotal, graphNew;
 
     private int activeCases;
@@ -77,8 +72,8 @@ public class PlayState extends EventBasedState {
         });
         bigMap = new ImageComponent(gameContainer, "assets/map.png", 465, 619, 780, 728);
         components.add(bigMap);
-        playbutton = new ImageComponent(gameContainer, "assets/gamestate/playbtn.png", 10000, 10000, 90, 83);
-        components.add(playbutton);
+        playButton = new ImageComponent(gameContainer, "assets/gamestate/playbtn.png", 10000, 10000, 90, 83);
+        components.add(playButton);
         components.add(new Button(gameContainer, 705, 78, 90, 83){
             @Override
             public void onLeftClick(){
@@ -150,10 +145,12 @@ public class PlayState extends EventBasedState {
                 stateBasedGame.enterState(1);
             }
         });
-
-        groupGraph = new GuiGroup(gameContainer);
-        components.add(groupGraph);
-        //groupGraph.addComponent(new Label(gameContainer, "TOTAL CASES", 90, 270, Main.pixelFontBlack, FontUtils.Alignment.LEFT));
+        graphBack = new ImageComponent(gameContainer, new Image("assets/gamestate/graphBack.png"),465, 619, 780, 728);
+        components.add(graphBack);
+        graphTotal = new Graph(gameContainer, 458, 550);
+        components.add(graphTotal);
+        graphNew = new Graph(gameContainer, 458, 910);
+        components.add(graphNew);
     }
 
     public void updateBar(int barNum, float progress){
@@ -208,11 +205,13 @@ public class PlayState extends EventBasedState {
                     ableToPlay = false;
                     btnNews2.setLocation(960, 540);
                 }
+                graphTotal.addData(totalCases);
+                graphNew.addData(newCases);
             }
-            playbutton.setLocation(10000, 10000);
+            playButton.setLocation(10000, 10000);
         }
         else {
-            playbutton.setLocation(705, 78);
+            playButton.setLocation(705, 78);
         }
     }
 

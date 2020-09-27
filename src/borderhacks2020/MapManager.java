@@ -12,7 +12,7 @@ public class MapManager {
     private ArrayList<ShapeComponent> cases = new ArrayList<ShapeComponent>();
 
     public void add (GameContainer gameContainer, int activeCases) {
-        activeCases /= 10;
+        activeCases /= 50;
         activeCases -= cases.size();
         if (activeCases < 0) {
             activeCases = Math.abs(activeCases);

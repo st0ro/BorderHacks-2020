@@ -9,7 +9,7 @@ import org.newdawn.slick.gui.GUIContext;
 
 public class GuiGroup extends ScreenComponent {
 
-    private List<ScreenComponent> components;
+    protected List<ScreenComponent> components;
 
     public GuiGroup(GUIContext container) {
         super(container);
