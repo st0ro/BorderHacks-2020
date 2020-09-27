@@ -26,6 +26,9 @@ public class MapManager {
             int x = 0;
             int y = 0;
             for (int i = 0; i < activeCases; i++) {
+                if(cases.size() > 100000)  {
+                    return;
+                }
                 weight = (float) Math.random();
                 if (weight > 0.45)
                     zone = 0;

@@ -36,5 +36,6 @@ public class GuiGroup extends ScreenComponent {
         for(ScreenComponent sc:components){
             sc.move(dx, dy);
         }
+        screenBox.setLocation(screenBox.getX() + dx, screenBox.getY() + dy);
     }
 }

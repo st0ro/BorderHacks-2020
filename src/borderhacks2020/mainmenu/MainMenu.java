@@ -13,9 +13,8 @@ public class MainMenu extends EventBasedState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        components.add(new ImageComponent(gameContainer, "assets/title_screen/background.png", Main.WIDTH/2, Main.HEIGHT/2, Main.WIDTH, Main.HEIGHT));
-        components.add(new Label(gameContainer, "Sample Text", Main.WIDTH/2, Main.HEIGHT/4));
-        Button playBtn = new Button(gameContainer, Main.WIDTH/2, Main.HEIGHT/2, 200, 100, new Image("assets/title_screen/playbtn.png")) {
+        components.add(new ImageComponent(gameContainer, "assets/title_screen/mainmenu.png", Main.WIDTH/2, Main.HEIGHT/2, Main.WIDTH, Main.HEIGHT));
+        Button playBtn = new Button(gameContainer, 1400, 900, 330, 120, new Image("assets/title_screen/playbtn.png")) {
             @Override
             public void onLeftClick() {
                 stateBasedGame.enterState(2);

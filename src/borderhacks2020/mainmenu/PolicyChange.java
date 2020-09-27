@@ -60,10 +60,10 @@ public class PolicyChange extends EventBasedState {
         for (int i = 0; i < policies.length; i++) {
             components.add(policies[i]);
         }
-        components.add(new Label(gameContainer, "Social Gatherings",  Main.WIDTH / 5,  150));
-        components.add(new Label(gameContainer, "International Policy",  2*Main.WIDTH / 5,  150));
-        components.add(new Label(gameContainer, "Economic",  3*Main.WIDTH / 5,  150));
-        components.add(new Label(gameContainer, "Miscellaneous",  4*Main.WIDTH / 5,  150));
+        components.add(new Label(gameContainer, "SOCIAL GATHERINGS",  Main.WIDTH / 5,  150, Main.pixelFontBlack));
+        components.add(new Label(gameContainer, "INTERNATIONAL POLICY",  2*Main.WIDTH / 5,  150, Main.pixelFontBlack));
+        components.add(new Label(gameContainer, "ECONOMIC",  3*Main.WIDTH / 5,  150, Main.pixelFontBlack));
+        components.add(new Label(gameContainer, "MISCELLANEOUS",  4*Main.WIDTH / 5,  150, Main.pixelFontBlack));
 
     }
 

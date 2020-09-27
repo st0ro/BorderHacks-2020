@@ -57,6 +57,11 @@ public class PlayState extends EventBasedState {
         components.add(new Button(gameContainer, 1021, 941, 165, 128){
             @Override
             public void onLeftClick(){
+                if(!mapSelected){
+                    graphTotal.move(10000, 10000);
+                    graphNew.move(10000, 10000);
+                    graphBack.move(10000, 10000);
+                }
                 mapSelected = true;
                 selector.setImage(mapImg);
                 bigMap.setLocation(465, 619);
@@ -65,6 +70,11 @@ public class PlayState extends EventBasedState {
         components.add(new Button(gameContainer, 1186, 941, 165, 128){
             @Override
             public void onLeftClick(){
+                if(mapSelected){
+                    graphTotal.move(-10000, -10000);
+                    graphNew.move(-10000, -10000);
+                    graphBack.move(-10000, -10000);
+                }
                 mapSelected = false;
                 selector.setImage(graphImg);
                 bigMap.setLocation(10000, 10000);
@@ -99,7 +109,7 @@ public class PlayState extends EventBasedState {
         deaths = 0;
         totalCases = 100;
         calendar = Calendar.getInstance();
-        calendar.set(2020, Calendar.JANUARY,20, 0, 0, 0);
+        calendar.set(2020, Calendar.JANUARY,1, 0, 0, 0);
         lblDate = new Label(gameContainer, dateFormat.format(calendar.getTime()), 451, 60, Main.pixelFontBlack);
         components.add(lblDate);
 
@@ -146,11 +156,11 @@ public class PlayState extends EventBasedState {
                 stateBasedGame.enterState(1);
             }
         });
-        graphBack = new ImageComponent(gameContainer, new Image("assets/gamestate/graphBack.png"),465, 619, 780, 728);
+        graphBack = new ImageComponent(gameContainer, new Image("assets/gamestate/graphBack.png"),10465, 10619, 780, 728);
         components.add(graphBack);
-        graphTotal = new Graph(gameContainer, 458, 550);
+        graphTotal = new Graph(gameContainer, 10458, 10550);
         components.add(graphTotal);
-        graphNew = new Graph(gameContainer, 458, 910);
+        graphNew = new Graph(gameContainer, 10458, 10910);
         components.add(graphNew);
     }
 

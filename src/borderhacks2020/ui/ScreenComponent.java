@@ -88,7 +88,7 @@ public abstract class ScreenComponent extends AbstractComponent {
     }
 
     public void move(int dx, int dy){
-        screenBox.setLocation(screenBox.getCenterX() + dx, screenBox.getCenterY() + dy);
+        screenBox.setLocation(screenBox.getX() + dx, screenBox.getY() + dy);
     }
 
 }

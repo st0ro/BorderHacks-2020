@@ -44,6 +44,7 @@ public class Main extends StateBasedGame {
             app.setDisplayMode(WIDTH, HEIGHT, true); //set window size and if fullscreen
             //app.setVSync(true);
             app.setTargetFrameRate(120);
+            app.setShowFPS(false);
             app.start();
         } catch (SlickException e) {
             e.printStackTrace(); //in case of failure to start game, will print error
