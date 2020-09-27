@@ -43,7 +43,8 @@ public class PlayState extends EventBasedState {
     private int deaths;
     private int totalCases;
     private float infectionModifier;
-
+    private float cure;
+    private float cureRate;
     private float cureModifier;
 
     private Calendar firstEvent, secondEvent;
@@ -100,6 +101,9 @@ public class PlayState extends EventBasedState {
         recoveryRate = 0.15f;
         deaths = 0;
         totalCases = 100;
+        cure = 1 / 366f;
+        cureRate = 1 / 366f;
+        cureModifier = 0;
         calendar = Calendar.getInstance();
         calendar.set(2020, Calendar.JANUARY,20, 0, 0, 0);
         lblDate = new Label(gameContainer, dateFormat.format(calendar.getTime()), 451, 60, Main.pixelFontBlack);
@@ -116,7 +120,7 @@ public class PlayState extends EventBasedState {
 
         updateBar(0, happiness/100);
         updateBar(1, economy/100);
-        updateBar(2, infectionRate - recoveryRate);
+        updateBar(2, cure);
         manager = new MapManager();
 
         firstEvent = Calendar.getInstance();
@@ -192,6 +196,7 @@ public class PlayState extends EventBasedState {
                 totalCases += activeCases * (infectionRate+infectionModifier);
                 happiness += happinessRate;
                 economy += economyRate;
+                cure += cureRate + cureModifier;
 
                 lblTotal.setText(Integer.toString(totalCases));
                 lblActive.setText(Integer.toString(activeCases));
@@ -200,7 +205,7 @@ public class PlayState extends EventBasedState {
 
                 updateBar(0, happiness/100);
                 updateBar(1, economy/100);
-                updateBar(2, infectionRate - recoveryRate);
+                updateBar(2, cure);
 
                 if(calendar.get(Calendar.MONTH) == firstEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == firstEvent.get(Calendar.DAY_OF_MONTH)){
                     gameTicking = false;
