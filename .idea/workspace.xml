@@ -22,6 +22,8 @@
     <list default="true" id="1d558298-ecef-4155-886a-14eefb975bf3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/borderhacks2020/gamestate/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/borderhacks2020/gamestate/PlayState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/Policy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/Policy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/PolicyChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/borderhacks2020/mainmenu/PolicyChange.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +73,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -106,10 +121,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1601166629782">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1601175830498">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1601154547360" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1601175830498" />
     <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601166629782" />
     <state x="743" y="410" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1601082532261">
       <screen x="0" y="0" width="1920" height="1040" />

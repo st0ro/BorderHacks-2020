@@ -45,8 +45,8 @@ public class PolicyChange extends EventBasedState {
                 new Policy(gameContainer, 850, 900, 150, 150, new Image("assets/policies/completeclosure.png"), economicPolicyBox, -0.03f, -0.6f, -0.4f),
                 new Policy(gameContainer, 1050, 900, 150, 150, new Image("assets/policies/stimuluscheck.png"), otherPolicyBox, 0f, -0.3f, 0.2f),
                 new Policy(gameContainer, 1250, 900, 150, 150, new Image("assets/policies/construction.png"), otherPolicyBox, 0.01f, 0.3f, 0.01f),
-                new Policy(gameContainer, 1450, 900, 150, 150, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox, 0f, -0.2f, 0f),
-                new Policy(gameContainer, 1650, 900, 150, 150, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox, 0f, 0.2f, 0f),
+                new Policy(gameContainer, 1450, 900, 150, 150, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox, 0f, -0.2f, 0f, (float)1/366),
+                new Policy(gameContainer, 1650, 900, 150, 150, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox, 0f, 0.2f, 0f, -(float)1/366),
         };
         policies[0].switchLocation();
         policies[4].switchLocation();
@@ -95,6 +95,7 @@ public class PolicyChange extends EventBasedState {
             em+=otherPolicyBox.getImplemented().getEconomyModifier();
             hm+=otherPolicyBox.getImplemented().getHappinessModifier();
             im+=otherPolicyBox.getImplemented().getInfectionModifier();
+            Main.playState.setCureRate(otherPolicyBox.getImplemented().getCureRate());
         }
         Main.playState.setEconomyRate(em);
         Main.playState.setHappinessRate(hm);
