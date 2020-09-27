@@ -18,7 +18,6 @@ public class MapManager {
             activeCases = Math.abs(activeCases);
             for (int i = 0; i < activeCases; i++) {
                 cases.remove((int) Math.round(Math.random() * (cases.size() - 1)));
-
             }
         }
         else {
