@@ -184,7 +184,7 @@ public class PlayState extends EventBasedState {
                 deaths += newDeaths;
                 int newCases = (int) Math.ceil(activeCases *((infectionRate+infectionModifier)-recoveryRate));
                 activeCases += newCases;
-                manager.add(container, newCases/10);
+                manager.add(container, activeCases);
                 totalCases += activeCases * (infectionRate+infectionModifier);
                 happiness = happiness + happiness * (happinessRate+happinessModifier);
                 economy = economy + economy * (economyRate+economyModifier);
