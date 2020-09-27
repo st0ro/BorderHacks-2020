@@ -44,7 +44,7 @@ public class PlayState extends EventBasedState {
     private int totalCases;
     private float infectionModifier;
 
-    private float cureRate;
+    private float cureModifier;
 
     private Calendar firstEvent, secondEvent;
 
@@ -234,8 +234,8 @@ public class PlayState extends EventBasedState {
         this.happinessRate = happinessRate;
     }
 
-    public void setCureRate(float cureRate){
-        this.cureRate = cureRate;
+    public void setCureModifier(float cureModifier){
+        this.cureModifier = cureModifier;
     }
 
     @Override

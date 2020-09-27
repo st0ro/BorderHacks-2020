@@ -2,7 +2,6 @@ package borderhacks2020.mainmenu;
 
 import borderhacks2020.EventBasedState;
 import borderhacks2020.Main;
-import borderhacks2020.gamestate.PlayState;
 import borderhacks2020.ui.Button;
 import borderhacks2020.ui.Label;
 import borderhacks2020.ui.ShapeComponent;
@@ -95,7 +94,7 @@ public class PolicyChange extends EventBasedState {
             em+=otherPolicyBox.getImplemented().getEconomyModifier();
             hm+=otherPolicyBox.getImplemented().getHappinessModifier();
             im+=otherPolicyBox.getImplemented().getInfectionModifier();
-            Main.playState.setCureRate(otherPolicyBox.getImplemented().getCureRate());
+            Main.playState.setCureModifier(otherPolicyBox.getImplemented().getCureModifier());
         }
         Main.playState.setEconomyRate(em);
         Main.playState.setHappinessRate(hm);

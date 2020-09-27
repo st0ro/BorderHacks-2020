@@ -9,7 +9,7 @@ public class Policy extends Button {
     private Slot slot;
     private int baseX, baseY;
 
-    private float cureRate;
+    private float cureModifier;
 
     private float infectionModifier, economyModifier, happinessModifier;
 
@@ -25,8 +25,8 @@ public class Policy extends Button {
         return happinessModifier;
     }
 
-    public float getCureRate() {
-        return cureRate;
+    public float getCureModifier() {
+        return cureModifier;
     }
 
 
@@ -48,7 +48,7 @@ public class Policy extends Button {
         this.infectionModifier = infectionModifier;
         this.economyModifier = economyModifier;
         this.happinessModifier = happinessModifier;
-        cureRate = 0;
+        cureModifier = 0;
     }
 
     public Policy(GUIContext container, int x, int y, int width, int height, Image image, Slot s, float infectionModifier, float economyModifier, float happinessModifier, float cureRate){
@@ -59,7 +59,7 @@ public class Policy extends Button {
         this.infectionModifier = infectionModifier;
         this.economyModifier = economyModifier;
         this.happinessModifier = happinessModifier;
-        this.cureRate = cureRate;
+        this.cureModifier = cureRate;
     }
 
     public void switchLocation(){
