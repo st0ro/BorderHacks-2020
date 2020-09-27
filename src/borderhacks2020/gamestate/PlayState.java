@@ -32,7 +32,7 @@ public class PlayState extends EventBasedState {
     private MapManager manager;
     private Button btnNews1, btnNews2;
     private Graph graphTotal, graphNew;
-    private Button lossScreen1, lossScreen2, lossScreen3;
+    private Button lossScreen1, lossScreen2, lossScreen3, victoryScreen;
 
     private int activeCases;
     private float infectionRate;
@@ -165,7 +165,8 @@ public class PlayState extends EventBasedState {
         components.add(lossScreen2);
         lossScreen3 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageRevolt.png"));
         components.add(lossScreen3);
-
+        victoryScreen = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/VictoryScreen.png"));
+        components.add(victoryScreen);
     }
 
     public void updateBar(int barNum, float progress){
@@ -245,6 +246,11 @@ public class PlayState extends EventBasedState {
                     gameTicking = false;
                     ableToPlay = false;
                     lossScreen3.setLocation(960, 540);
+                }
+                else if (cure >= 1) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    victoryScreen.setLocation(960, 540);
                 }
             }
             playButton.setLocation(10000, 10000);
