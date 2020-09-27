@@ -31,22 +31,22 @@ public class PolicyChange extends EventBasedState {
         otherPolicyBox = new Slot(gameContainer, 442, 990, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.transparent, Color.transparent);
         components.add(otherPolicyBox);
         Policy[] policies = {
-                new Policy(gameContainer, 995, 180, 200, 200, new Image("assets/policies/regular.png"), socialPolicyBox, 0.03f, 0.3f, 0.2f),
-                new Policy(gameContainer, 1225, 180, 200, 200, new Image("assets/policies/mandatorymasks.png"), socialPolicyBox, 0f, -0.1f, -0.1f),
-                new Policy(gameContainer, 1455, 180, 200, 200, new Image("assets/policies/nogatherings.png"), socialPolicyBox, -0.01f, -0.2f, -0.3f),
-                new Policy(gameContainer, 1685, 180, 200, 200, new Image("assets/policies/lockdown.png"), socialPolicyBox,-0.02f, -0.4f, -0.5f),
-                new Policy(gameContainer, 995, 450, 200, 200, new Image("assets/policies/openborders.png"), internationalPolicyBox, 0.02f, 0.1f, 0.1f),
+                new Policy(gameContainer, 995, 180, 200, 200, new Image("assets/policies/regular.png"), socialPolicyBox, 0.02f, 0.3f, 0.2f),
+                new Policy(gameContainer, 1225, 180, 200, 200, new Image("assets/policies/mandatorymasks.png"), socialPolicyBox, -0.01f, 0, -0.1f),
+                new Policy(gameContainer, 1455, 180, 200, 200, new Image("assets/policies/nogatherings.png"), socialPolicyBox, -0.02f, -0.2f, -0.3f),
+                new Policy(gameContainer, 1685, 180, 200, 200, new Image("assets/policies/lockdown.png"), socialPolicyBox,-0.03f, -0.3f, -0.4f),
+                new Policy(gameContainer, 995, 450, 200, 200, new Image("assets/policies/openborders.png"), internationalPolicyBox, 0.02f, 0.2f, 0.1f),
                 new Policy(gameContainer, 1225, 450, 200, 200, new Image("assets/policies/restrictedtravel.png"), internationalPolicyBox, 0f, 0f, 0),
                 new Policy(gameContainer, 1455, 450, 200, 200, new Image("assets/policies/minimalcontact.png"), internationalPolicyBox, -0.01f, -0.1f, -0.1f),
-                new Policy(gameContainer, 1685, 450, 200, 200, new Image("assets/policies/isolation.png"), internationalPolicyBox, -0.02f, -0.3f, -0.3f),
-                new Policy(gameContainer, 995, 720, 200, 200, new Image("assets/policies/normaloperation.png"), economicPolicyBox, 0.03f, 0.1f, 0.2f),
+                new Policy(gameContainer, 1685, 450, 200, 200, new Image("assets/policies/isolation.png"), internationalPolicyBox, -0.02f, -0.2f, -0.3f),
+                new Policy(gameContainer, 995, 720, 200, 200, new Image("assets/policies/normaloperation.png"), economicPolicyBox, 0.02f, 0.1f, 0.2f),
                 new Policy(gameContainer, 1225, 720, 200, 200, new Image("assets/policies/sociallydistance.png"), economicPolicyBox, 0f, 0f, -0.1f),
                 new Policy(gameContainer, 1445, 720, 200, 200, new Image("assets/policies/essentialsonly.png"), economicPolicyBox, -0.01f, -0.2f, -0.3f),
-                new Policy(gameContainer, 1685, 720, 200, 200, new Image("assets/policies/completeclosure.png"), economicPolicyBox, -0.03f, -0.6f, -0.4f),
-                new Policy(gameContainer, 995, 990, 200, 200, new Image("assets/policies/stimuluscheck.png"), otherPolicyBox, 0f, -0.3f, 0.2f),
-                new Policy(gameContainer, 1225, 990, 200, 200, new Image("assets/policies/construction.png"), otherPolicyBox, 0.01f, 0.3f, 0.01f),
-                new Policy(gameContainer, 1455, 990, 200, 200, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox, 0f, -0.2f, 0f, (float)1/366),
-                new Policy(gameContainer, 1685, 990, 200, 200, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox, 0f, 0.2f, 0f, -(float)1/732),
+                new Policy(gameContainer, 1685, 720, 200, 200, new Image("assets/policies/completeclosure.png"), economicPolicyBox, -0.04f, -0.5f, -0.3f),
+                new Policy(gameContainer, 995, 990, 200, 200, new Image("assets/policies/stimuluscheck.png"), otherPolicyBox, 0f, -0.2f, 0.2f),
+                new Policy(gameContainer, 1225, 990, 200, 200, new Image("assets/policies/construction.png"), otherPolicyBox, 0.01f, 0.2f, 0.01f),
+                new Policy(gameContainer, 1455, 990, 200, 200, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox, 0f, -0.1f, 0f, (float)1/366),
+                new Policy(gameContainer, 1685, 990, 200, 200, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox, 0f, 0.1f, 0f, -(float)1/732),
         };
         policies[0].switchLocation();
         policies[4].switchLocation();
