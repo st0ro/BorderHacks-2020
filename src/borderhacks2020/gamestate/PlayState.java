@@ -32,6 +32,7 @@ public class PlayState extends EventBasedState {
     private MapManager manager;
     private Button btnNews1, btnNews2;
     private Graph graphTotal, graphNew;
+    private Button lossScreen1, lossScreen2, lossScreen3, victoryScreen;
 
     private int activeCases;
     private float infectionRate;
@@ -43,6 +44,9 @@ public class PlayState extends EventBasedState {
     private int deaths;
     private int totalCases;
     private float infectionModifier;
+    private float cure;
+    private float cureRate;
+    private float cureModifier;
 
     private Calendar firstEvent, secondEvent;
 
@@ -108,6 +112,9 @@ public class PlayState extends EventBasedState {
         recoveryRate = 0.15f;
         deaths = 0;
         totalCases = 100;
+        cure = 1 / 366f;
+        cureRate = 1 / 366f;
+        cureModifier = 0;
         calendar = Calendar.getInstance();
         calendar.set(2020, Calendar.JANUARY,1, 0, 0, 0);
         lblDate = new Label(gameContainer, dateFormat.format(calendar.getTime()), 451, 60, Main.pixelFontBlack);
@@ -124,7 +131,7 @@ public class PlayState extends EventBasedState {
 
         updateBar(0, happiness/100);
         updateBar(1, economy/100);
-        updateBar(2, infectionRate - recoveryRate);
+        updateBar(2, cure);
         manager = new MapManager();
 
         firstEvent = Calendar.getInstance();
@@ -162,6 +169,14 @@ public class PlayState extends EventBasedState {
         components.add(graphTotal);
         graphNew = new Graph(gameContainer, 10458, 10910);
         components.add(graphNew);
+        lossScreen1 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageCases.png"));
+        components.add(lossScreen1);
+        lossScreen2 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageEconomy.png"));
+        components.add(lossScreen2);
+        lossScreen3 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageRevolt.png"));
+        components.add(lossScreen3);
+        victoryScreen = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/VictoryScreen.png"));
+        components.add(victoryScreen);
     }
 
     public void updateBar(int barNum, float progress){
@@ -176,6 +191,7 @@ public class PlayState extends EventBasedState {
         }
         btnNews1.render(gameContainer, g);
         btnNews2.render(gameContainer, g);
+
     }
 
     @Override
@@ -200,6 +216,7 @@ public class PlayState extends EventBasedState {
                 totalCases += activeCases * (infectionRate+infectionModifier);
                 happiness += happinessRate;
                 economy += economyRate;
+                cure += cureRate + cureModifier;
 
                 lblTotal.setText(Integer.toString(totalCases));
                 lblActive.setText(Integer.toString(activeCases));
@@ -208,7 +225,7 @@ public class PlayState extends EventBasedState {
 
                 updateBar(0, happiness/100);
                 updateBar(1, economy/100);
-                updateBar(2, infectionRate - recoveryRate);
+                updateBar(2, cure);
 
                 if(calendar.get(Calendar.MONTH) == firstEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == firstEvent.get(Calendar.DAY_OF_MONTH)){
                     gameTicking = false;
@@ -222,6 +239,29 @@ public class PlayState extends EventBasedState {
                 }
                 graphTotal.addData(totalCases);
                 graphNew.addData(newCases);
+
+                if(totalCases >= 1000000) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    lossScreen1.setLocation(960, 540);
+                }
+
+                else if (economy <= 0) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    lossScreen2.setLocation(960, 540);
+                }
+
+                else if (happiness <= 0) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    lossScreen3.setLocation(960, 540);
+                }
+                else if (cure >= 1) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    victoryScreen.setLocation(960, 540);
+                }
             }
             playButton.setLocation(10000, 10000);
         }
@@ -240,6 +280,10 @@ public class PlayState extends EventBasedState {
 
     public void setHappinessRate(float happinessRate) {
         this.happinessRate = happinessRate;
+    }
+
+    public void setCureModifier(float cureModifier){
+        this.cureModifier = cureModifier;
     }
 
     @Override
