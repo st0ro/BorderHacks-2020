@@ -11,6 +11,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.util.FontUtils;
 
 import java.text.DateFormat;
@@ -160,7 +162,7 @@ public class PlayState extends EventBasedState {
             @Override
             public void onLeftClick(){
                 if(ableToPlay)
-                stateBasedGame.enterState(1);
+                stateBasedGame.enterState(1, new FadeOutTransition(Color.black, Main.fadeTime), new FadeInTransition(Color.black, Main.fadeTime));
             }
         });
         graphBack = new ImageComponent(gameContainer, new Image("assets/gamestate/graphBack.png"),10465, 10619, 780, 728);
@@ -289,5 +291,12 @@ public class PlayState extends EventBasedState {
     @Override
     public int getID() {
         return 2;
+    }
+
+    @Override
+    public void keyPressed(int key, char c){
+        if(key == Input.KEY_ESCAPE){
+            System.exit(0);
+        }
     }
 }
