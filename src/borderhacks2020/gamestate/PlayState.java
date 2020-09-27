@@ -3,10 +3,7 @@ package borderhacks2020.gamestate;
 import borderhacks2020.EventBasedState;
 import borderhacks2020.Main;
 import borderhacks2020.MapManager;
-import borderhacks2020.ui.Button;
-import borderhacks2020.ui.ImageComponent;
-import borderhacks2020.ui.ShapeComponent;
-import borderhacks2020.ui.Label;
+import borderhacks2020.ui.*;
 
 import org.lwjgl.Sys;
 import org.newdawn.slick.*;
@@ -38,6 +35,8 @@ public class PlayState extends EventBasedState {
     private boolean gameTicking = true, ableToPlay = true;
     private MapManager manager;
     private Button btnNews1, btnNews2;
+    private GuiGroup groupGraph;
+    private Graph graphTotal, graphNew;
 
     private int activeCases;
     private float infectionRate;
@@ -104,7 +103,7 @@ public class PlayState extends EventBasedState {
         deaths = 0;
         totalCases = 100;
         calendar = Calendar.getInstance();
-        calendar.set(2020, Calendar.JANUARY,0, 0, 0, 0);
+        calendar.set(2020, Calendar.JANUARY,20, 0, 0, 0);
         lblDate = new Label(gameContainer, dateFormat.format(calendar.getTime()), 451, 60, Main.pixelFontBlack);
         components.add(lblDate);
 
@@ -117,9 +116,9 @@ public class PlayState extends EventBasedState {
         lblRecovered = new Label(gameContainer, Integer.toString(totalCases-activeCases-deaths), 1860, 290, Main.pixelFontBlack, FontUtils.Alignment.RIGHT);
         components.add(lblRecovered);
 
-        updateBar(gameContainer, 0, happiness/100);
-        updateBar(gameContainer, 1, economy/100);
-        updateBar(gameContainer, 2, infectionRate - recoveryRate);
+        updateBar(0, happiness/100);
+        updateBar(1, economy/100);
+        updateBar(2, infectionRate - recoveryRate);
         manager = new MapManager();
 
         firstEvent = Calendar.getInstance();
@@ -147,12 +146,17 @@ public class PlayState extends EventBasedState {
         components.add(new Button(gameContainer, 1586, 941, 578, 128){
             @Override
             public void onLeftClick(){
+                if(ableToPlay)
                 stateBasedGame.enterState(1);
             }
         });
+
+        groupGraph = new GuiGroup(gameContainer);
+        components.add(groupGraph);
+        //groupGraph.addComponent(new Label(gameContainer, "TOTAL CASES", 90, 270, Main.pixelFontBlack, FontUtils.Alignment.LEFT));
     }
 
-    public void updateBar(GameContainer gameContainer, int barNum, float progress) throws SlickException {
+    public void updateBar(int barNum, float progress){
         Rectangle rect = (Rectangle)(bars[barNum].getScreenBox());
         rect.setWidth((int)(630 * progress));
     }
@@ -162,6 +166,8 @@ public class PlayState extends EventBasedState {
         if(mapSelected){
             manager.render(gameContainer, g);
         }
+        btnNews1.render(gameContainer, g);
+        btnNews2.render(gameContainer, g);
     }
 
     @Override
@@ -188,16 +194,16 @@ public class PlayState extends EventBasedState {
                 lblDeaths.setText(Integer.toString(deaths));
                 lblRecovered.setText(Integer.toString(totalCases-activeCases-deaths));
 
-                updateBar(container, 0, happiness/100);
-                updateBar(container, 1, economy/100);
-                updateBar(container, 2, infectionRate - recoveryRate);
+                updateBar(0, happiness/100);
+                updateBar(1, economy/100);
+                updateBar(2, infectionRate - recoveryRate);
 
                 if(calendar.get(Calendar.MONTH) == firstEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == firstEvent.get(Calendar.DAY_OF_MONTH)){
                     gameTicking = false;
                     ableToPlay = false;
                     btnNews1.setLocation(960, 540);
                 }
-                if(calendar.get(Calendar.MONTH) == firstEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == firstEvent.get(Calendar.DAY_OF_MONTH)){
+                if(calendar.get(Calendar.MONTH) == secondEvent.get(Calendar.MONTH) && calendar.get(Calendar.DAY_OF_MONTH) == secondEvent.get(Calendar.DAY_OF_MONTH)){
                     gameTicking = false;
                     ableToPlay = false;
                     btnNews2.setLocation(960, 540);

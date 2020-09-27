@@ -31,4 +31,10 @@ public class GuiGroup extends ScreenComponent {
         return components.get(id);
     }
 
+    @Override
+    public void move(int dx, int dy){
+        for(ScreenComponent sc:components){
+            sc.move(dx, dy);
+        }
+    }
 }
