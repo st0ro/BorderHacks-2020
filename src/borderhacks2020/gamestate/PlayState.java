@@ -42,9 +42,9 @@ public class PlayState extends EventBasedState {
     private float recoveryRate;
     private int deaths;
     private int totalCases;
+    private float infectionModifier;
 
     private Calendar firstEvent, secondEvent;
-    private float infectionModifier, economyModifier, happinessModifier;
 
 
     @Override
@@ -88,12 +88,13 @@ public class PlayState extends EventBasedState {
         for (ShapeComponent s: bars) {
             components.add(s);
         }
+
         activeCases = 100;
-        happiness = 75;
-        economy = 75;
+        happiness = 50;
+        economy = 50;
         infectionRate = 0.2f;
-        happinessRate = -0.008f;
-        economyRate = 0;
+        happinessRate = 0f;
+        economyRate = 0f;
         recoveryRate = 0.15f;
         deaths = 0;
         totalCases = 100;
@@ -177,14 +178,18 @@ public class PlayState extends EventBasedState {
                 lblDate.setText(dateFormat.format(calendar.getTime()));
 
 
-                int newDeaths = (int) Math.floor(activeCases *0.01);
+                int newDeaths = (int) Math.floor(activeCases *0.03);
                 deaths += newDeaths;
-                int newCases = (int) Math.ceil(activeCases *((infectionRate+infectionModifier)-recoveryRate));
+                int newCases;
+                if((infectionRate+infectionModifier)-recoveryRate>0)
+                    newCases = (int) Math.ceil(activeCases * ((infectionRate + infectionModifier) - recoveryRate));
+                else
+                    newCases = (int) Math.floor(activeCases * ((infectionRate + infectionModifier) - recoveryRate));
                 activeCases += newCases;
                 manager.add(container, activeCases);
                 totalCases += activeCases * (infectionRate+infectionModifier);
-                happiness = happiness + happiness * (happinessRate+happinessModifier);
-                economy = economy + economy * (economyRate+economyModifier);
+                happiness += happinessRate;
+                economy += economyRate;
 
                 lblTotal.setText(Integer.toString(totalCases));
                 lblActive.setText(Integer.toString(activeCases));
@@ -219,12 +224,12 @@ public class PlayState extends EventBasedState {
         this.infectionModifier = infectionModifier;
     }
 
-    public void setEconomyModifier(float economyModifier) {
-        this.economyModifier = economyModifier;
+    public void setEconomyRate(float economyRate) {
+        this.economyRate = economyRate;
     }
 
-    public void setHappinessModifier(float happinessModifier) {
-        this.happinessModifier = happinessModifier;
+    public void setHappinessRate(float happinessRate) {
+        this.happinessRate = happinessRate;
     }
 
     @Override
