@@ -32,6 +32,7 @@ public class PlayState extends EventBasedState {
     private MapManager manager;
     private Button btnNews1, btnNews2;
     private Graph graphTotal, graphNew;
+    private Button lossScreen1, lossScreen2, lossScreen3;
 
     private int activeCases;
     private float infectionRate;
@@ -154,6 +155,13 @@ public class PlayState extends EventBasedState {
         components.add(graphTotal);
         graphNew = new Graph(gameContainer, 458, 910);
         components.add(graphNew);
+        lossScreen1 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageCases.png"));
+        components.add(lossScreen1);
+        lossScreen2 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageEconomy.png"));
+        components.add(lossScreen2);
+        lossScreen3 = new Button(gameContainer, 10000, 10000, 1500, 1500, new Image("assets/LossImageRevolt.png"));
+        components.add(lossScreen3);
+
     }
 
     public void updateBar(int barNum, float progress){
@@ -168,6 +176,7 @@ public class PlayState extends EventBasedState {
         }
         btnNews1.render(gameContainer, g);
         btnNews2.render(gameContainer, g);
+
     }
 
     @Override
@@ -214,6 +223,24 @@ public class PlayState extends EventBasedState {
                 }
                 graphTotal.addData(totalCases);
                 graphNew.addData(newCases);
+
+                if(totalCases >= 1000000) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    lossScreen1.setLocation(960, 540);
+                }
+
+                else if (economy <= 0) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    lossScreen2.setLocation(960, 540);
+                }
+
+                else if (happiness <= 0) {
+                    gameTicking = false;
+                    ableToPlay = false;
+                    lossScreen3.setLocation(960, 540);
+                }
             }
             playButton.setLocation(10000, 10000);
         }
