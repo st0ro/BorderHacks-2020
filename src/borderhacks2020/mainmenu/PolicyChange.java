@@ -2,6 +2,7 @@ package borderhacks2020.mainmenu;
 
 import borderhacks2020.EventBasedState;
 import borderhacks2020.Main;
+import borderhacks2020.gamestate.PlayState;
 import borderhacks2020.ui.Button;
 import borderhacks2020.ui.Label;
 import borderhacks2020.ui.ShapeComponent;
@@ -13,37 +14,46 @@ import org.newdawn.slick.Color;
 
 
 public class PolicyChange extends EventBasedState {
+    private Slot socialPolicyBox;
+    private Slot internationalPolicyBox;
+    private Slot economicPolicyBox;
+    private Slot otherPolicyBox;
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         components.add(new ShapeComponent(gameContainer, Main.WIDTH / 2, 3 * Main.HEIGHT / 4, 9 * Main.WIDTH / 10, 5 * Main.HEIGHT / 12, Color.lightGray, Color.darkGray));
-        Slot socialPolicyBox = new Slot(gameContainer, Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0xDB3131"), Color.lightGray);
+        socialPolicyBox = new Slot(gameContainer, Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0xDB3131"), Color.lightGray);
         components.add(socialPolicyBox);
-        Slot internationalPolicyBox = new Slot(gameContainer, 2 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0x62AFF4"), Color.lightGray);
+        internationalPolicyBox = new Slot(gameContainer, 2 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0x62AFF4"), Color.lightGray);
         components.add(internationalPolicyBox);
-        Slot economicPolicyBox = new Slot(gameContainer, 3 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0xEAE84B"), Color.lightGray);
+        economicPolicyBox = new Slot(gameContainer, 3 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0xEAE84B"), Color.lightGray);
         components.add(economicPolicyBox);
-        Slot otherPolicyBox = new Slot(gameContainer, 4 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0x69D15B"), Color.lightGray);
+        otherPolicyBox = new Slot(gameContainer, 4 * Main.WIDTH / 5, Main.HEIGHT / 4, 1 * Main.WIDTH / 10, Main.HEIGHT / 4, Color.decode("0x69D15B"), Color.lightGray);
         components.add(otherPolicyBox);
         Policy[] policies = {
-                new Policy(gameContainer, 250, 700, 150, 150, new Image("assets/policies/regular.png"), socialPolicyBox),
-                new Policy(gameContainer, 450, 700, 150, 150, new Image("assets/policies/mandatorymasks.png"), socialPolicyBox),
-                new Policy(gameContainer, 650, 700, 150, 150, new Image("assets/policies/nogatherings.png"), socialPolicyBox),
-                new Policy(gameContainer, 850, 700, 150, 150, new Image("assets/policies/lockdown.png"), socialPolicyBox),
-                new Policy(gameContainer, 1050, 700, 150, 150, new Image("assets/policies/openborders.png"), internationalPolicyBox),
-                new Policy(gameContainer, 1250, 700, 150, 150, new Image("assets/policies/restrictedtravel.png"), internationalPolicyBox),
-                new Policy(gameContainer, 1450, 700, 150, 150, new Image("assets/policies/minimalcontact.png"), internationalPolicyBox),
-                new Policy(gameContainer, 1650, 700, 150, 150, new Image("assets/policies/isolation.png"), internationalPolicyBox),
-                new Policy(gameContainer, 250, 900, 150, 150, new Image("assets/policies/sociallydistance.png"), economicPolicyBox),
-                new Policy(gameContainer, 450, 900, 150, 150, new Image("assets/policies/normaloperation.png"), economicPolicyBox),
-                new Policy(gameContainer, 650, 900, 150, 150, new Image("assets/policies/essentialsonly.png"), economicPolicyBox),
-                new Policy(gameContainer, 850, 900, 150, 150, new Image("assets/policies/completeclosure.png"), economicPolicyBox),
-                new Policy(gameContainer, 1050, 900, 150, 150, new Image("assets/policies/stimuluscheck.png"), otherPolicyBox),
-                new Policy(gameContainer, 1250, 900, 150, 150, new Image("assets/policies/construction.png"), otherPolicyBox),
-                new Policy(gameContainer, 1450, 900, 150, 150, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox),
-                new Policy(gameContainer, 1650, 900, 150, 150, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox)
+                new Policy(gameContainer, 250, 700, 150, 150, new Image("assets/policies/regular.png"), socialPolicyBox, 0, 0, 0.001f),
+                new Policy(gameContainer, 450, 700, 150, 150, new Image("assets/policies/mandatorymasks.png"), socialPolicyBox, -0.01f, -0.0005f, -0.001f),
+                new Policy(gameContainer, 650, 700, 150, 150, new Image("assets/policies/nogatherings.png"), socialPolicyBox, -0.015f, -0.001f, -0.0015f),
+                new Policy(gameContainer, 850, 700, 150, 150, new Image("assets/policies/lockdown.png"), socialPolicyBox,-0.05f, -0.01f, -0.01f),
+                new Policy(gameContainer, 1050, 700, 150, 150, new Image("assets/policies/openborders.png"), internationalPolicyBox, 0.03f, 0.005f, 0.001f),
+                new Policy(gameContainer, 1250, 700, 150, 150, new Image("assets/policies/restrictedtravel.png"), internationalPolicyBox, 0.01f, 0.001f, 0),
+                new Policy(gameContainer, 1450, 700, 150, 150, new Image("assets/policies/minimalcontact.png"), internationalPolicyBox, 0f, 0f, -0.001f),
+                new Policy(gameContainer, 1650, 700, 150, 150, new Image("assets/policies/isolation.png"), internationalPolicyBox, -0.02f, -0.001f, -0.003f),
+                new Policy(gameContainer, 250, 900, 150, 150, new Image("assets/policies/sociallydistance.png"), economicPolicyBox, -0.005f, 0f, -0.0005f),
+                new Policy(gameContainer, 450, 900, 150, 150, new Image("assets/policies/normaloperation.png"), economicPolicyBox, 0.005f, 0.001f, 0f),
+                new Policy(gameContainer, 650, 900, 150, 150, new Image("assets/policies/essentialsonly.png"), economicPolicyBox, -0.01f, -0.001f, -0.001f),
+                new Policy(gameContainer, 850, 900, 150, 150, new Image("assets/policies/completeclosure.png"), economicPolicyBox, -0.05f, -0.01f, -0.01f),
+                new Policy(gameContainer, 1050, 900, 150, 150, new Image("assets/policies/stimuluscheck.png"), otherPolicyBox, -0.02f, -0.001f, 0f),
+                new Policy(gameContainer, 1250, 900, 150, 150, new Image("assets/policies/construction.png"), otherPolicyBox, 0f, 0.002f, 0f),
+                new Policy(gameContainer, 1450, 900, 150, 150, new Image("assets/policies/acceleratedresearch.png"), otherPolicyBox, 0f, -0.001f, 0f),
+                new Policy(gameContainer, 1650, 900, 150, 150, new Image("assets/policies/deceleratedresearch.png"), otherPolicyBox, 0f, 0.001f, 0f),
         };
-        components.add(new Button(gameContainer, Main.WIDTH/2, Main.HEIGHT/2 - 50, 150, 75, new Image("assets/title_screen/playbtn.png")));
+        components.add(new Button(gameContainer, Main.WIDTH/2, Main.HEIGHT/2 - 50, 150, 75, new Image("assets/title_screen/playbtn.png")){
+            @Override
+            public void onLeftClick(){
+                apply(stateBasedGame);
+            }
+        });
         for (int i = 0; i < policies.length; i++) {
             components.add(policies[i]);
         }
@@ -57,6 +67,37 @@ public class PolicyChange extends EventBasedState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 
+    }
+
+    public void apply(StateBasedGame stateBasedGame){
+        float em=0;
+        float hm=0;
+        float im=0;
+        if(socialPolicyBox.isOccupied()){
+            em+=socialPolicyBox.getImplemented().getEconomyModifier();
+            hm+=socialPolicyBox.getImplemented().getHappinessModifier();
+            im+=socialPolicyBox.getImplemented().getInfectionModifier();
+        }
+        if (economicPolicyBox.isOccupied()){
+            em+=economicPolicyBox.getImplemented().getEconomyModifier();
+            hm+=economicPolicyBox.getImplemented().getHappinessModifier();
+            im+=economicPolicyBox.getImplemented().getInfectionModifier();
+        }
+        if(internationalPolicyBox.isOccupied()){
+            em+=internationalPolicyBox.getImplemented().getEconomyModifier();
+            hm+=internationalPolicyBox.getImplemented().getHappinessModifier();
+            im+=internationalPolicyBox.getImplemented().getInfectionModifier();
+        }
+        if(otherPolicyBox.isOccupied()){
+            em+=otherPolicyBox.getImplemented().getEconomyModifier();
+            hm+=otherPolicyBox.getImplemented().getHappinessModifier();
+            im+=otherPolicyBox.getImplemented().getInfectionModifier();
+        }
+        Main.playState.setEconomyModifier(em);
+        Main.playState.setHappinessModifier(hm);
+        Main.playState.setInfectionModifier(im);
+
+        stateBasedGame.enterState(2);
     }
 
     @Override

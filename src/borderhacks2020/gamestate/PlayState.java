@@ -50,6 +50,8 @@ public class PlayState extends EventBasedState {
     private int totalCases;
 
     private Calendar firstEvent, secondEvent;
+    private float infectionModifier, economyModifier, happinessModifier;
+
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -97,7 +99,7 @@ public class PlayState extends EventBasedState {
         economy = 75;
         infectionRate = 0.2f;
         happinessRate = -0.008f;
-        economyRate = 0.001f;
+        economyRate = 0;
         recoveryRate = 0.15f;
         deaths = 0;
         totalCases = 100;
@@ -170,14 +172,16 @@ public class PlayState extends EventBasedState {
                 timer -= 1000;
                 calendar.add(Calendar.DAY_OF_MONTH, 1);
                 lblDate.setText(dateFormat.format(calendar.getTime()));
+
+
                 int newDeaths = (int) Math.floor(activeCases *0.01);
                 deaths += newDeaths;
-                int newCases = (int) Math.ceil(activeCases *(infectionRate-recoveryRate));
+                int newCases = (int) Math.ceil(activeCases *((infectionRate+infectionModifier)-recoveryRate));
                 activeCases += newCases;
                 manager.add(container, newCases/10);
-                totalCases += activeCases * infectionRate;
-                happiness = happiness + happiness * happinessRate;
-                economy = economy + economy * economyRate;
+                totalCases += activeCases * (infectionRate+infectionModifier);
+                happiness = happiness + happiness * (happinessRate+happinessModifier);
+                economy = economy + economy * (economyRate+economyModifier);
 
                 lblTotal.setText(Integer.toString(totalCases));
                 lblActive.setText(Integer.toString(activeCases));
@@ -204,6 +208,18 @@ public class PlayState extends EventBasedState {
         else {
             playbutton.setLocation(705, 78);
         }
+    }
+
+    public void setInfectionModifier(float infectionModifier) {
+        this.infectionModifier = infectionModifier;
+    }
+
+    public void setEconomyModifier(float economyModifier) {
+        this.economyModifier = economyModifier;
+    }
+
+    public void setHappinessModifier(float happinessModifier) {
+        this.happinessModifier = happinessModifier;
     }
 
     @Override

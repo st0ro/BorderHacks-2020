@@ -17,6 +17,7 @@ public class Main extends StateBasedGame {
     public static final int WIDTH = 1920, HEIGHT = 1080;
     public static UnicodeFont fontSegoe14;
     public static SpriteSheetFont pixelFontBlack;
+    public static PlayState playState;
 
     public Main() {
         super("Pandemic!!!");
@@ -25,7 +26,8 @@ public class Main extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gameContainer) throws SlickException {
         addState(new MainMenu());
-        addState(new PlayState());
+        playState = new PlayState();
+        addState(playState);
         addState(new PolicyChange());
         fontSegoe14 = new UnicodeFont(new java.awt.Font("Segoe UI", Font.PLAIN, 14));
         fontSegoe14.addAsciiGlyphs();

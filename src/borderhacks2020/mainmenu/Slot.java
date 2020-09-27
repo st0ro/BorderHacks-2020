@@ -6,17 +6,24 @@ import org.newdawn.slick.gui.GUIContext;
 
 public class Slot extends ShapeComponent{
 
-    private boolean isOccupied;
+    private Policy implemented;
 
     public Slot(GUIContext container, int x, int y, int width, int height, Color fill, Color outline) {
         super(container, x, y, width, height, fill, outline);
     }
 
     public boolean isOccupied() {
-        return isOccupied;
+        if(implemented==null){
+            return false;
+        }
+        return true;
     }
 
-    public void changeOccupied(){
-        isOccupied = !isOccupied;
+    public Policy getImplemented() {
+        return implemented;
+    }
+
+    public void setPolicy(Policy p){
+        implemented = p;
     }
 }
