@@ -18,6 +18,7 @@ public class Main extends StateBasedGame {
     public static UnicodeFont fontSegoe14;
     public static SpriteSheetFont pixelFontBlack;
     public static PlayState playState;
+    public static int fadeTime = 200;
 
     public Main() {
         super("Pandemic!!!");

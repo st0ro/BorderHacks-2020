@@ -8,6 +8,8 @@ import borderhacks2020.ui.Label;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MainMenu extends EventBasedState {
 
@@ -17,7 +19,7 @@ public class MainMenu extends EventBasedState {
         Button playBtn = new Button(gameContainer, 1400, 900, 330, 120, new Image("assets/title_screen/playbtn.png")) {
             @Override
             public void onLeftClick() {
-                stateBasedGame.enterState(2);
+                stateBasedGame.enterState(2, new FadeOutTransition(Color.black, Main.fadeTime), new FadeInTransition(Color.black, Main.fadeTime));
 
             }
         };
@@ -27,5 +29,12 @@ public class MainMenu extends EventBasedState {
     @Override
     public int getID() {
         return 0;
+    }
+
+    @Override
+    public void keyPressed(int key, char c){
+        if(key == Input.KEY_ESCAPE){
+            System.exit(0);
+        }
     }
 }
